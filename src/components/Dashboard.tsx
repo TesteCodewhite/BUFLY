@@ -6,13 +6,13 @@ import { Progress } from "@/components/ui/progress";
 import { 
   Bell, 
   User, 
-  Settings, 
-  Plus, 
   Edit3, 
   Users, 
   Trophy,
   TrendingUp,
-  Clock
+  Clock,
+  BookOpen,
+  Target
 } from "lucide-react";
 
 interface DashboardProps {
@@ -33,38 +33,46 @@ export default function Dashboard({ userType, onStartQuiz, onLogout }: Dashboard
   ];
 
   const students = [
-    { id: '1', name: 'Aluno 1', score: 57, position: 1, avatar: '👤' },
-    { id: '2', name: 'Aluno 2', score: 52, position: 2, avatar: '👤' },
-    { id: '3', name: 'Aluno 3', score: 48, position: 3, avatar: '👤' },
+    { id: '1', name: 'Ana Clara', score: 57, position: 1, avatar: '👩' },
+    { id: '2', name: 'João Pedro', score: 52, position: 2, avatar: '👨' },
+    { id: '3', name: 'Maria Silva', score: 48, position: 3, avatar: '👩' },
   ];
 
   return (
-    <div className="min-h-screen bg-soft-gradient">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b-2 border-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-background">
+      {/* Elegant Header */}
+      <header className="bg-background border-b border-border/50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-4">
-              <h1 className="text-2xl font-dyslexic font-bold text-primary">Bufly</h1>
-              <p className="text-muted-foreground font-dyslexic hidden sm:block">
-                Seja bem-vindo!
-              </p>
+            <div className="flex items-center space-x-6">
+              <h1 className="text-2xl font-serif font-bold text-charcoal">Bufly</h1>
+              <nav className="hidden md:flex space-x-6">
+                <button className="font-sans text-charcoal hover:text-sapphire elegant-underline">
+                  Turmas
+                </button>
+                <button className="font-sans text-charcoal/60 hover:text-sapphire elegant-underline">
+                  Relatórios
+                </button>
+                <button className="font-sans text-charcoal/60 hover:text-sapphire elegant-underline">
+                  Criar
+                </button>
+              </nav>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon">
-                <Bell className="w-5 h-5" />
-                <Badge className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center">
+              <Button variant="ghost" size="icon" className="relative">
+                <Bell className="w-5 h-5 text-charcoal/60" />
+                <Badge className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-ruby text-white text-xs flex items-center justify-center p-0">
                   3
                 </Badge>
               </Button>
               <Button variant="ghost" size="icon">
-                <User className="w-5 h-5" />
+                <User className="w-5 h-5 text-charcoal/60" />
               </Button>
               <Button 
                 variant="outline" 
                 size="sm" 
                 onClick={onLogout}
-                className="font-dyslexic"
+                className="font-sans border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-background"
               >
                 Sair
               </Button>
@@ -73,101 +81,94 @@ export default function Dashboard({ userType, onStartQuiz, onLogout }: Dashboard
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+        {/* Page Title */}
+        <div className="mb-8">
+          <h2 className="text-4xl font-serif font-bold text-charcoal mb-2">
+            Visão Geral das Turmas
+          </h2>
+          <p className="text-lg font-sans text-charcoal/70">
+            Gerencie suas turmas e acompanhe o progresso dos alunos
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column - Classes/Activities */}
+          {/* Left Column - Classes */}
           <div className="lg:col-span-1 space-y-6">
-            <Card className="shadow-lg border-0">
-              <CardHeader className="pb-4">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="font-dyslexic text-lg">
-                    {userType === 'teacher' ? 'Suas Turmas' : 'Suas Atividades'}
-                  </CardTitle>
-                  {userType === 'teacher' && (
-                    <Button size="sm" variant="success">
-                      <Plus className="w-4 h-4" />
-                    </Button>
-                  )}
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {classes.map((classItem) => (
-                  <div
-                    key={classItem.id}
-                    className="p-4 rounded-xl bg-secondary-light hover:bg-secondary transition-colors cursor-pointer border-2 border-transparent hover:border-secondary"
-                    onClick={() => setSelectedClass(classItem.id)}
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-dyslexic font-bold">
-                          {classItem.name.split(' ')[1]}
-                        </div>
-                        <div>
-                          <h3 className="font-dyslexic font-semibold text-foreground">
-                            {classItem.name}
-                          </h3>
-                          <p className="text-sm text-muted-foreground font-dyslexic">
-                            {classItem.subject}
-                          </p>
-                        </div>
-                      </div>
-                      {userType === 'teacher' && (
-                        <Button variant="ghost" size="icon" className="opacity-0 group-hover:opacity-100">
-                          <Edit3 className="w-4 h-4" />
-                        </Button>
-                      )}
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-xs font-dyslexic">
-                        <span>Progresso</span>
-                        <span>{classItem.progress}%</span>
-                      </div>
-                      <Progress value={classItem.progress} className="h-2" />
-                    </div>
-                    {userType === 'teacher' && (
-                      <div className="flex items-center mt-3 text-sm text-muted-foreground font-dyslexic">
+            {classes.map((classItem) => (
+              <Card
+                key={classItem.id}
+                className="bg-slate border border-sapphire/20 hover:border-sapphire/40 transition-all duration-300 cursor-pointer"
+                onClick={() => setSelectedClass(classItem.id)}
+              >
+                <CardHeader className="pb-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle className="font-serif text-lg text-background mb-1">
+                        {classItem.name} - {classItem.subject}
+                      </CardTitle>
+                      <div className="flex items-center text-background/70 text-sm font-sans">
                         <Users className="w-4 h-4 mr-1" />
                         {classItem.students} alunos
                       </div>
+                    </div>
+                    {userType === 'teacher' && (
+                      <Button variant="ghost" size="icon" className="text-background/60 hover:text-background hover:bg-background/10">
+                        <Edit3 className="w-4 h-4" />
+                      </Button>
                     )}
                   </div>
-                ))}
-              </CardContent>
-            </Card>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm font-sans text-background/70">
+                      <span>Progresso</span>
+                      <span>{classItem.progress}%</span>
+                    </div>
+                    <div className="w-full bg-charcoal/50 rounded-full h-3 overflow-hidden">
+                      <div 
+                        className="h-full progress-crystal rounded-full transition-all duration-500"
+                        style={{ width: `${classItem.progress}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
-          {/* Middle Column - Main Content */}
-          <div className="lg:col-span-1 space-y-6">
-            <Card className="shadow-lg border-0">
+          {/* Middle Column - Main Actions */}
+          <div className="lg:col-span-1">
+            <Card className="bg-background border border-charcoal/20 border-dashed">
               <CardHeader>
-                <CardTitle className="font-dyslexic text-lg flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
-                    📚
+                <CardTitle className="font-sans text-lg text-charcoal flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-sapphire rounded flex items-center justify-center">
+                    <BookOpen className="w-5 h-5 text-background" />
                   </div>
-                  <span>Turma</span>
+                  <span>Ações Principais</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="text-center py-8">
-                  <h3 className="font-dyslexic font-semibold text-xl mb-4">
+              <CardContent className="space-y-6">
+                <div className="text-center">
+                  <h3 className="font-serif font-semibold text-xl text-charcoal mb-6">
                     {selectedClass ? `Turma ${selectedClass}` : 'Matemática Básica'}
                   </h3>
-                  <div className="flex justify-center space-x-4 mb-6">
+                  <div className="space-y-4">
                     <Button 
-                      variant="accent" 
                       size="lg"
                       onClick={onStartQuiz}
-                      className="font-dyslexic shadow-lg hover:scale-105 transition-all"
+                      className="w-full h-14 bg-sapphire text-background hover:bg-sapphire/90 font-sans font-medium shadow-lg hover:shadow-xl transition-all"
                     >
-                      <Clock className="w-5 h-5 mr-2" />
+                      <Clock className="w-5 h-5 mr-3" />
                       Gerenciar Tarefas
                     </Button>
                     <Button 
-                      variant="outline" 
+                      variant="outline"
                       size="lg"
                       onClick={onStartQuiz}
-                      className="font-dyslexic border-success text-success hover:bg-success hover:text-success-foreground"
+                      className="w-full h-14 border-2 border-emerald text-emerald hover:bg-emerald hover:text-background font-sans font-medium transition-all"
                     >
+                      <Target className="w-5 h-5 mr-3" />
                       Gerenciar Turma
                     </Button>
                   </div>
@@ -176,23 +177,23 @@ export default function Dashboard({ userType, onStartQuiz, onLogout }: Dashboard
             </Card>
           </div>
 
-          {/* Right Column - Statistics/Leaderboard */}
+          {/* Right Column - Statistics */}
           <div className="lg:col-span-1 space-y-6">
-            {/* Progress Statistics */}
-            <Card className="shadow-lg border-0">
+            {/* Progress Chart */}
+            <Card className="bg-background border border-charcoal/20 border-dashed">
               <CardHeader>
-                <CardTitle className="font-dyslexic text-lg flex items-center space-x-2">
-                  <TrendingUp className="w-5 h-5 text-success" />
-                  <span>Acertos por questão: 57%</span>
+                <CardTitle className="font-sans text-lg text-charcoal flex items-center space-x-2">
+                  <TrendingUp className="w-5 h-5 text-emerald" />
+                  <span>Acertos Gerais</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="w-32 h-32 mx-auto relative">
-                  {/* This would be a proper chart in a real app */}
-                  <div className="w-full h-full rounded-full border-8 border-muted relative">
-                    <div className="absolute inset-0 rounded-full border-8 border-success border-r-transparent border-b-transparent transform rotate-45"></div>
-                    <div className="absolute inset-4 rounded-full bg-muted flex items-center justify-center">
-                      <span className="text-lg font-dyslexic font-bold text-foreground">57%</span>
+                  {/* Elegant circular progress */}
+                  <div className="w-full h-full rounded-full border-4 border-charcoal/20 relative">
+                    <div className="absolute inset-0 rounded-full border-4 border-emerald border-r-transparent border-b-transparent transform rotate-45 progress-crystal"></div>
+                    <div className="absolute inset-4 rounded-full bg-background border border-charcoal/10 flex items-center justify-center">
+                      <span className="text-2xl font-serif font-bold text-charcoal">57%</span>
                     </div>
                   </div>
                 </div>
@@ -200,35 +201,37 @@ export default function Dashboard({ userType, onStartQuiz, onLogout }: Dashboard
             </Card>
 
             {/* Student Rankings */}
-            <Card className="shadow-lg border-0">
+            <Card className="bg-background border border-charcoal/20 border-dashed">
               <CardHeader>
-                <CardTitle className="font-dyslexic text-lg flex items-center space-x-2">
-                  <Trophy className="w-5 h-5 text-warning" />
+                <CardTitle className="font-sans text-lg text-charcoal flex items-center space-x-2">
+                  <Trophy className="w-5 h-5 text-amber" />
                   <span>Ranking</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-4">
                 {students.map((student, index) => (
                   <div
                     key={student.id}
-                    className="flex items-center space-x-3 p-3 rounded-xl bg-secondary-light"
+                    className="flex items-center space-x-4 p-3 rounded border border-charcoal/10"
                   >
-                    <div className="flex items-center space-x-3 flex-1">
-                      <Badge 
-                        variant={index === 0 ? 'default' : 'secondary'}
-                        className="w-8 h-8 rounded-full flex items-center justify-center font-dyslexic font-bold"
-                      >
-                        #{student.position}
-                      </Badge>
-                      <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-                        👤
-                      </div>
-                      <span className="font-dyslexic font-semibold text-foreground">
+                    <Badge 
+                      variant={index === 0 ? 'default' : 'secondary'}
+                      className={`w-8 h-8 rounded-full flex items-center justify-center font-sans font-bold ${
+                        index === 0 ? 'bg-amber text-charcoal' : 'bg-charcoal/10 text-charcoal'
+                      }`}
+                    >
+                      #{student.position}
+                    </Badge>
+                    <div className="w-8 h-8 bg-charcoal/10 rounded-full flex items-center justify-center text-sm">
+                      {student.avatar}
+                    </div>
+                    <div className="flex-1">
+                      <span className="font-sans font-medium text-charcoal">
                         {student.name}
                       </span>
                     </div>
                     <div className="text-right">
-                      <div className="text-sm font-dyslexic font-semibold text-foreground">
+                      <div className="text-sm font-sans font-semibold text-emerald">
                         {student.score}pts
                       </div>
                     </div>

@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { User, GraduationCap, Eye, EyeOff } from "lucide-react";
-import pencilIcon from "@/assets/pencil-icon.png";
-import bookIcon from "@/assets/book-icon.png";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { User, GraduationCap, Eye, EyeOff, Feather } from "lucide-react";
 
 interface LoginPageProps {
   onLogin: (userType: 'student' | 'teacher') => void;
@@ -22,113 +20,121 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-primary-gradient flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-20 left-20 opacity-20 animate-gentle-bounce">
-        <img src={pencilIcon} alt="" className="w-24 h-24" />
+    <div className="min-h-screen bg-background flex flex-col">
+      {/* Stained Glass Header Effect */}
+      <div className="w-full h-32 stained-glass-bg relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          {/* Geometric shapes for stained glass effect */}
+          <div className="absolute top-4 left-1/4 w-16 h-16 bg-emerald/20 transform rotate-45 animate-gentle-float"></div>
+          <div className="absolute top-8 right-1/3 w-12 h-12 bg-amber/20 transform rotate-12 animate-gentle-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-4 left-1/3 w-20 h-8 bg-sapphire/20 transform -rotate-12 animate-gentle-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-8 right-1/4 w-14 h-14 bg-ruby/20 transform rotate-45 animate-gentle-float" style={{ animationDelay: '0.5s' }}></div>
+        </div>
       </div>
-      <div className="absolute bottom-20 right-20 opacity-20 animate-gentle-bounce" style={{ animationDelay: '1s' }}>
-        <img src={bookIcon} alt="" className="w-32 h-32" />
-      </div>
-      
-      {/* Floating shapes for visual appeal */}
-      <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-white/10 rounded-full animate-pulse"></div>
-      <div className="absolute bottom-1/3 left-1/4 w-12 h-12 bg-white/5 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
 
-      <Card className="w-full max-w-md mx-auto shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
-        <CardHeader className="text-center space-y-4 pb-6">
-          <CardTitle className="text-4xl font-dyslexic font-bold text-primary mb-2">
-            Bufly
-          </CardTitle>
-          <div className="space-y-2">
-            <h2 className="text-xl font-dyslexic font-semibold text-foreground">
-              Bem-vindo
-            </h2>
-            <p className="text-muted-foreground font-dyslexic">
-              Faça login para acessar a página
+      <div className="flex-1 flex items-center justify-center p-8">
+        <div className="w-full max-w-md space-y-8">
+          {/* Logo and Welcome */}
+          <div className="text-center space-y-6">
+            <div className="flex items-center justify-center space-x-2">
+              <h1 className="text-5xl font-serif font-bold text-charcoal">
+                Bufly
+              </h1>
+              <Feather className="w-8 h-8 text-sapphire transform rotate-12" />
+            </div>
+            <p className="text-lg font-sans text-charcoal/80">
+              Bem-vindo à sua biblioteca de<br />conhecimento.
             </p>
           </div>
-        </CardHeader>
 
-        <CardContent className="space-y-6">
-          {/* User Type Selection */}
-          <div className="grid grid-cols-2 gap-3">
-            <Button
-              variant={userType === 'student' ? 'user' : 'inactive'}
-              size="lg"
-              onClick={() => setUserType('student')}
-              className="h-16 flex-col gap-2"
-            >
-              <User className="w-6 h-6" />
-              <span className="font-dyslexic font-semibold">Aluno</span>
-            </Button>
-            <Button
-              variant={userType === 'teacher' ? 'teacher' : 'inactive'}
-              size="lg"
-              onClick={() => setUserType('teacher')}
-              className="h-16 flex-col gap-2"
-            >
-              <GraduationCap className="w-6 h-6" />
-              <span className="font-dyslexic font-semibold">Professor</span>
-            </Button>
-          </div>
+          {/* Login Card */}
+          <Card className="border-0 shadow-none bg-transparent">
+            <CardHeader className="pb-6">
+              {/* User Type Selection */}
+              <div className="grid grid-cols-2 gap-4">
+                <Button
+                  variant={userType === 'student' ? 'default' : 'ghost'}
+                  size="lg"
+                  onClick={() => setUserType('student')}
+                  className={`h-16 flex-col gap-2 border ${
+                    userType === 'student' 
+                      ? 'bg-sapphire text-background hover:bg-sapphire/90' 
+                      : 'bg-transparent border-sapphire text-sapphire hover:bg-sapphire/5'
+                  }`}
+                >
+                  <User className="w-6 h-6" />
+                  <span className="font-sans font-medium">Aluno</span>
+                </Button>
+                <Button
+                  variant={userType === 'teacher' ? 'default' : 'ghost'}
+                  size="lg"
+                  onClick={() => setUserType('teacher')}
+                  className={`h-16 flex-col gap-2 border ${
+                    userType === 'teacher' 
+                      ? 'bg-sapphire text-background hover:bg-sapphire/90' 
+                      : 'bg-transparent border-sapphire text-sapphire hover:bg-sapphire/5'
+                  }`}
+                >
+                  <GraduationCap className="w-6 h-6" />
+                  <span className="font-sans font-medium">Professor</span>
+                </Button>
+              </div>
+            </CardHeader>
 
-          {/* Email Input */}
-          <div className="space-y-2">
-            <label className="text-sm font-dyslexic font-medium text-foreground">
-              Email
-            </label>
-            <Input
-              type="email"
-              placeholder="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-14 text-base font-dyslexic border-2 focus:border-primary rounded-xl"
-            />
-          </div>
+            <CardContent className="space-y-6">
+              {/* Email Input */}
+              <div className="space-y-2">
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="h-12 text-base font-sans border-0 border-b-2 border-charcoal/30 bg-transparent rounded-none focus:border-sapphire focus:ring-0 px-0"
+                />
+              </div>
 
-          {/* Password Input */}
-          <div className="space-y-2">
-            <label className="text-sm font-dyslexic font-medium text-foreground">
-              Senha
-            </label>
-            <div className="relative">
-              <Input
-                type={showPassword ? "text" : "password"}
-                placeholder="senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="h-14 text-base font-dyslexic border-2 focus:border-primary rounded-xl pr-12"
-              />
+              {/* Password Input */}
+              <div className="space-y-2">
+                <div className="relative">
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Senha"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="h-12 text-base font-sans border-0 border-b-2 border-charcoal/30 bg-transparent rounded-none focus:border-sapphire focus:ring-0 px-0 pr-10"
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 h-8 w-8 hover:bg-transparent text-charcoal/60 hover:text-sapphire"
+                  >
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </Button>
+                </div>
+              </div>
+
+              {/* Login Button */}
               <Button
-                type="button"
-                variant="ghost"
-                size="icon"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-2 top-1/2 -translate-y-1/2 h-10 w-10 hover:bg-muted/50"
+                onClick={handleLogin}
+                className="w-full h-12 text-base font-sans font-medium bg-sapphire text-background hover:bg-sapphire/90 rounded transition-all duration-300"
               >
-                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                Entrar
               </Button>
-            </div>
-          </div>
 
-          {/* Login Button */}
-          <Button
-            onClick={handleLogin}
-            variant={userType === 'teacher' ? 'teacher' : 'user'}
-            size="lg"
-            className="w-full h-14 text-lg font-dyslexic font-semibold"
-          >
-            Entrar
-          </Button>
-
-          {/* Accessibility Notice */}
-          <div className="text-center text-sm text-foreground font-dyslexic leading-relaxed flex items-center justify-center gap-2 bg-secondary-light p-3 rounded-lg">
-            <div className="w-5 h-5 bg-accent rounded-full flex items-center justify-center text-white text-xs">♿</div>
-            <span className="font-semibold">Plataforma inclusiva para estudantes com dislexia e TDAH</span>
-          </div>
-        </CardContent>
-      </Card>
+              {/* Accessibility Notice */}
+              <div className="text-center text-sm text-charcoal/70 font-sans leading-relaxed mt-8 p-4 border border-emerald/20 rounded bg-emerald/5">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <div className="w-5 h-5 bg-emerald rounded-full flex items-center justify-center text-white text-xs">♿</div>
+                  <span className="font-medium text-charcoal">Plataforma Inclusiva</span>
+                </div>
+                <p>Para estudantes com dislexia e TDAH</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 }

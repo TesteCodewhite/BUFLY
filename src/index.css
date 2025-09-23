@@ -2,120 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-/* BUFLY Design System - Inclusive and accessible design for dyslexia and ADHD students */
+/* BUFLY "Crystal Library" Design System - Old Money aesthetic with elegant refinement */
 
 @layer base {
   :root {
-    /* BUFLY Color Palette - High contrast and calming colors */
-    --background: 0 0% 98%;
-    --foreground: 235 84% 20%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 235 84% 20%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 235 84% 20%;
-
-    /* Primary - BUFLY Purple/Blue gradient */
-    --primary: 250 65% 50%;
-    --primary-foreground: 0 0% 100%;
-    --primary-gradient: linear-gradient(135deg, hsl(250 65% 50%), hsl(260 70% 45%));
-
-    /* Secondary - Soft salmon/pink for accessibility */
-    --secondary: 345 50% 75%;
-    --secondary-foreground: 235 84% 20%;
-    --secondary-light: 345 30% 88%;
-
-    /* Muted - Light grays with warm undertones */
-    --muted: 220 15% 92%;
-    --muted-foreground: 235 25% 50%;
-
-    /* Accent - Warm coral for interactive elements */
-    --accent: 15 85% 70%;
-    --accent-foreground: 0 0% 100%;
-
-    /* Success - Calming green */
-    --success: 120 40% 60%;
-    --success-foreground: 0 0% 100%;
-
-    /* Warning - Gentle orange */
-    --warning: 35 85% 65%;
-    --warning-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    /* BUFLY Semantic Colors for Actions */
-    --cor-primaria: 250 65% 50%;
-    --cor-sucesso: 120 40% 60%;
-    --cor-alerta: 35 85% 65%;
-    --cor-acao: 345 50% 75%;
+    /* BUFLY Crystal Library Color Palette */
+    /* Primary colors */
+    --parchment: 45 45% 98%;
+    --charcoal: 232 28% 26%;
+    --slate: 232 21% 35%;
     
-    /* Inactive states for better contrast */
-    --inactive: 220 15% 96%;
-    --inactive-foreground: 235 25% 65%;
-    --inactive-border: 220 15% 85%;
-
-    /* Borders and inputs with softer contrast */
-    --border: 220 15% 85%;
-    --input: 0 0% 100%;
-    --ring: 250 65% 50%;
-
-    --radius: 1rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Accent colors */
+    --sapphire: 201 88% 22%;
+    --emerald: 165 100% 31%;
+    --ruby: 358 62% 38%;
+    --amber: 48 100% 50%;
+    
+    /* System colors mapped to new palette */
+    --background: var(--parchment);
+    --foreground: var(--charcoal);
+    
+    --card: var(--parchment);
+    --card-foreground: var(--charcoal);
+    
+    --popover: var(--parchment);
+    --popover-foreground: var(--charcoal);
+    
+    --primary: var(--sapphire);
+    --primary-foreground: var(--parchment);
+    
+    --secondary: var(--slate);
+    --secondary-foreground: var(--parchment);
+    --secondary-light: 232 21% 90%;
+    
+    --muted: 232 15% 92%;
+    --muted-foreground: var(--charcoal);
+    
+    --accent: var(--sapphire);
+    --accent-foreground: var(--parchment);
+    
+    --success: var(--emerald);
+    --success-foreground: var(--parchment);
+    
+    --warning: var(--amber);
+    --warning-foreground: var(--charcoal);
+    
+    --destructive: var(--ruby);
+    --destructive-foreground: var(--parchment);
+    
+    --border: 232 28% 82%;
+    --input: var(--parchment);
+    --ring: var(--sapphire);
+    
+    /* Inactive states */
+    --inactive: var(--parchment);
+    --inactive-foreground: 232 28% 55%;
+    --inactive-border: 232 28% 75%;
+    
+    --radius: 0.25rem;
+    
+    --sidebar-background: var(--parchment);
+    --sidebar-foreground: var(--charcoal);
+    --sidebar-primary: var(--sapphire);
+    --sidebar-primary-foreground: var(--parchment);
+    --sidebar-accent: var(--slate);
+    --sidebar-accent-foreground: var(--parchment);
+    --sidebar-border: 232 28% 82%;
+    --sidebar-ring: var(--sapphire);
   }
 }
 
@@ -125,40 +78,99 @@
   }
 
   body {
-    @apply bg-background text-foreground font-dyslexic;
+    @apply bg-background text-foreground font-sans;
     line-height: 1.6;
   }
 
-  /* Dyslexia-friendly text styles */
+  /* Crystal Library typography system */
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-sans {
+    font-family: 'Lato', system-ui, sans-serif;
+  }
+
+  /* Legacy dyslexia-friendly styles for compatibility */
   .font-dyslexic {
-    font-family: 'OpenDyslexic', 'Inter', system-ui, sans-serif;
+    font-family: 'Lato', system-ui, sans-serif;
   }
 
   .font-readable {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Lato', system-ui, sans-serif;
   }
 
-  /* BUFLY Animations for engagement */
-  .animate-gentle-bounce {
-    animation: gentle-bounce 2s ease-in-out infinite;
+  /* Elegant animations for the refined aesthetic */
+  .animate-gentle-float {
+    animation: gentle-float 3s ease-in-out infinite;
   }
 
-  @keyframes gentle-bounce {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
+  @keyframes gentle-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(1deg); }
+  }
+
+  /* Crystal glass effects */
+  .glass-effect {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .progress-crystal {
+    background: linear-gradient(90deg, 
+      hsla(var(--emerald), 0.8), 
+      hsla(var(--emerald), 0.6)
+    );
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 0 8px hsla(var(--emerald), 0.4);
+  }
+
+  /* Stained glass header effect */
+  .stained-glass-bg {
+    background: 
+      linear-gradient(135deg, 
+        hsla(var(--sapphire), 0.15) 0%,
+        hsla(var(--emerald), 0.15) 35%,
+        hsla(var(--amber), 0.15) 70%,
+        hsla(var(--sapphire), 0.15) 100%
+      ),
+      repeating-conic-gradient(from 0deg at 20% 30%, 
+        transparent 0deg, 
+        hsla(var(--sapphire), 0.1) 60deg, 
+        transparent 120deg
+      ),
+      repeating-conic-gradient(from 45deg at 80% 70%, 
+        transparent 0deg, 
+        hsla(var(--emerald), 0.1) 45deg, 
+        transparent 90deg
+      );
+    backdrop-filter: blur(12px);
   }
 
   /* High contrast focus styles for accessibility */
   .focus-visible {
-    @apply ring-4 ring-primary ring-opacity-50 outline-none;
+    @apply ring-2 ring-primary ring-opacity-50 outline-none;
   }
 
-  /* Gradient backgrounds */
-  .bg-primary-gradient {
-    background: var(--primary-gradient);
+  /* Elegant underline animation */
+  .elegant-underline {
+    position: relative;
   }
 
-  .bg-soft-gradient {
-    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)));
+  .elegant-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background: hsl(var(--sapphire));
+    transition: width 0.3s ease;
+  }
+
+  .elegant-underline:hover::after {
+    width: 100%;
   }
 }

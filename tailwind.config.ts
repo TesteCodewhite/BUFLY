@@ -14,10 +14,22 @@ export default {
     },
     extend: {
       fontFamily: {
-        'dyslexic': ['OpenDyslexic', 'Inter', 'system-ui', 'sans-serif'],
-        'readable': ['Inter', 'system-ui', 'sans-serif'],
+        'serif': ['Playfair Display', 'serif'],
+        'sans': ['Lato', 'system-ui', 'sans-serif'],
+        'dyslexic': ['Lato', 'system-ui', 'sans-serif'], // Legacy compatibility
+        'readable': ['Lato', 'system-ui', 'sans-serif'], // Legacy compatibility
       },
       colors: {
+        // Crystal Library semantic colors
+        parchment: "hsl(var(--parchment))",
+        charcoal: "hsl(var(--charcoal))",
+        slate: "hsl(var(--slate))",
+        sapphire: "hsl(var(--sapphire))",
+        emerald: "hsl(var(--emerald))",
+        ruby: "hsl(var(--ruby))",
+        amber: "hsl(var(--amber))",
+        
+        // System colors
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

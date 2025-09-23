@@ -45,6 +45,17 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
+    /* BUFLY Semantic Colors for Actions */
+    --cor-primaria: 250 65% 50%;
+    --cor-sucesso: 120 40% 60%;
+    --cor-alerta: 35 85% 65%;
+    --cor-acao: 345 50% 75%;
+    
+    /* Inactive states for better contrast */
+    --inactive: 220 15% 96%;
+    --inactive-foreground: 235 25% 65%;
+    --inactive-border: 220 15% 85%;
+
     /* Borders and inputs with softer contrast */
     --border: 220 15% 85%;
     --input: 0 0% 100%;

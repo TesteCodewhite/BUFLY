@@ -54,7 +54,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
           {/* User Type Selection */}
           <div className="grid grid-cols-2 gap-3">
             <Button
-              variant={userType === 'student' ? 'user' : 'outline'}
+              variant={userType === 'student' ? 'user' : 'inactive'}
               size="lg"
               onClick={() => setUserType('student')}
               className="h-16 flex-col gap-2"
@@ -63,7 +63,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
               <span className="font-dyslexic font-semibold">Aluno</span>
             </Button>
             <Button
-              variant={userType === 'teacher' ? 'teacher' : 'outline'}
+              variant={userType === 'teacher' ? 'teacher' : 'inactive'}
               size="lg"
               onClick={() => setUserType('teacher')}
               className="h-16 flex-col gap-2"
@@ -123,8 +123,9 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
           </Button>
 
           {/* Accessibility Notice */}
-          <div className="text-center text-xs text-muted-foreground font-dyslexic leading-relaxed">
-            Plataforma inclusiva para estudantes com dislexia e TDAH
+          <div className="text-center text-sm text-foreground font-dyslexic leading-relaxed flex items-center justify-center gap-2 bg-secondary-light p-3 rounded-lg">
+            <div className="w-5 h-5 bg-accent rounded-full flex items-center justify-center text-white text-xs">♿</div>
+            <span className="font-semibold">Plataforma inclusiva para estudantes com dislexia e TDAH</span>
           </div>
         </CardContent>
       </Card>

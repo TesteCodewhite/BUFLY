@@ -157,16 +157,16 @@ export default function Dashboard({ userType, onStartQuiz, onLogout }: Dashboard
                       variant="accent" 
                       size="lg"
                       onClick={onStartQuiz}
-                      className="font-dyslexic"
+                      className="font-dyslexic shadow-lg hover:scale-105 transition-all"
                     >
                       <Clock className="w-5 h-5 mr-2" />
                       Gerenciar Tarefas
                     </Button>
                     <Button 
-                      variant="success" 
+                      variant="outline" 
                       size="lg"
                       onClick={onStartQuiz}
-                      className="font-dyslexic"
+                      className="font-dyslexic border-success text-success hover:bg-success hover:text-success-foreground"
                     >
                       Gerenciar Turma
                     </Button>

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import LandingPage from "@/components/LandingPage";
-import LoginPage from "@/components/LoginPage";
-import MainDashboard from "@/components/MainDashboard";
-import QuizPage from "@/components/QuizPage";
+import LandingPage from "./LandingPage";
+import LoginPage from "../components/LoginPage";
+import MainDashboard from "../components/MainDashboard";
+import QuizPage from "../components/QuizPage";
 
 type Page = 'landing' | 'login' | 'dashboard' | 'quiz';
 type UserType = 'student' | 'teacher' | null;

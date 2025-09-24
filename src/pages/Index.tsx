@@ -1,14 +1,20 @@
 import { useState } from "react";
+import LandingPage from "@/components/LandingPage";
 import LoginPage from "@/components/LoginPage";
-import Dashboard from "@/components/Dashboard";
+import MainDashboard from "@/components/MainDashboard";
 import QuizPage from "@/components/QuizPage";
 
-type Page = 'login' | 'dashboard' | 'quiz';
+type Page = 'landing' | 'login' | 'dashboard' | 'quiz';
 type UserType = 'student' | 'teacher' | null;
 
 const Index = () => {
-  const [currentPage, setCurrentPage] = useState<Page>('login');
+  const [currentPage, setCurrentPage] = useState<Page>('landing');
   const [userType, setUserType] = useState<UserType>(null);
+
+  const handleGetStarted = (type: 'student' | 'teacher') => {
+    setUserType(type);
+    setCurrentPage('login');
+  };
 
   const handleLogin = (type: 'student' | 'teacher') => {
     setUserType(type);
@@ -17,7 +23,7 @@ const Index = () => {
 
   const handleLogout = () => {
     setUserType(null);
-    setCurrentPage('login');
+    setCurrentPage('landing');
   };
 
   const handleStartQuiz = () => {
@@ -29,20 +35,21 @@ const Index = () => {
   };
 
   switch (currentPage) {
+    case 'landing':
+      return <LandingPage onGetStarted={handleGetStarted} />;
     case 'login':
       return <LoginPage onLogin={handleLogin} />;
     case 'dashboard':
       return (
-        <Dashboard 
+        <MainDashboard 
           userType={userType!} 
-          onStartQuiz={handleStartQuiz}
           onLogout={handleLogout}
         />
       );
     case 'quiz':
       return <QuizPage onBack={handleBackToDashboard} />;
     default:
-      return <LoginPage onLogin={handleLogin} />;
+      return <LandingPage onGetStarted={handleGetStarted} />;
   }
 };
 

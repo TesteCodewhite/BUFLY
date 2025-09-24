@@ -1,4 +1,3 @@
-````markdown
 # BUFLY – Projeto Educacional Inclusivo
 
 ## 📌 Sobre o Projeto
@@ -15,6 +14,7 @@ O **Lovable** é crucial nesta etapa porque:
 ## 🚪 Como importar e rodar o projeto
 
 ### 1. Clonar o repositório
+
 ```sh
 git clone <SEU_GIT_URL>
 cd <NOME_DO_PROJETO>
